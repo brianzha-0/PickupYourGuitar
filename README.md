@@ -3,3 +3,6 @@ All credits go to https://www.tinkercad.com/things/7NcI6LBhkHm-guitarpickupwirin
                   and 
                   https://github.com/brianthornock/TunablePickup 
                   at this point
+
+Installation and insulation:
+https://www.youtube.com/shorts/Y19OoboG4MY
