@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar for Desktop / Bottom Bar for Mobile -->
+        <nav class="navigation">
+            <div class="logo">🚀 TaskApp</div>
+            <ul class="nav-links">
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header>
+                <h1>My Dashboard</h1>
+                <p id="welcome-msg">Loading application...</p>
+            </header>
+
+            <section class="task-section">
+                <div class="card">
+                    <h3>Add New Task</h3>
+                    <div class="input-group">
+                        <input type="text" id="task-input" placeholder="What needs to be done?">
+                        <button id="add-task-btn">Add Task</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Current Tasks</h3>
+                    <ul id="task-list">
+                        <!-- Tasks will be injected here via TypeScript -->
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- The compiled JavaScript output -->
+    <script src="../dist/app.js" defer></script>
+</body>
+</html>
