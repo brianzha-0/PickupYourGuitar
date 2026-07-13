@@ -4,6 +4,7 @@ All credits go to https://www.tinkercad.com/things/7NcI6LBhkHm-guitarpickupwirin
                   https://github.com/brianthornock/TunablePickup 
                   at this point
 
+## Will of Materializing
 Installation and insulation:
 https://www.youtube.com/shorts/Y19OoboG4MY
 
@@ -17,3 +18,10 @@ https://bfasset.costco-static.com/U447IH35/as/brsvgm8n98gs959bch3b6s/5443106-894
 
 (As)(Ins)piration:
 https://www.tinkercad.com/projects/Vintage-Mini-Amp
+
+
+## Bill of Materials (BOM)
+| Name | Amount | Unit(s) | Tax |
+|------|--------|---------|-------|
+| [AD-35 Mini Sound Pick-up Piezo Amplifier Transducer Stick Pickup](https://www.walmart.com/ip/AD-35-Mini-Sound-Pick-up-Piezo-Amplifier-Transducer-Stick-Pickup-for-Acoustic-Guitar-Ukulele-Violin-Cello-Banjo/14381712030) | $15.07 | 1 | $1.96 |
+| **Total** | | | **CAD $17.03** |
