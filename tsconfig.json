@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "module": "None",               /* Crucial: Strips out node/commonJS export code */
+    "module": "preserve",           /* Fixes TS6046: Outputs clean standard code */
+    "moduleResolution": "bundler",
     "rootDir": "./src",
     "outDir": "./dist",
     "strict": true,

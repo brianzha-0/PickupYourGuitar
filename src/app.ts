@@ -1,25 +1,62 @@
-// Define explicit types for data safety
 interface Task {
     id: number;
     text: string;
 }
 
-// Initial state
 let tasks: Task[] = [
     { id: 1, text: "Build a responsive web application layout" },
     { id: 2, text: "Connect TypeScript compiler functionality" }
 ];
 
-// DOM Element references with strict TypeScript casting
 const welcomeMsg = document.getElementById("welcome-msg") as HTMLParagraphElement;
+const pageTitle = document.getElementById("page-title") as HTMLHeadingElement;
 const taskList = document.getElementById("task-list") as HTMLUListElement;
 const taskInput = document.getElementById("task-input") as HTMLInputElement;
 const addTaskBtn = document.getElementById("add-task-btn") as HTMLButtonElement;
 
-// Function to print current active tasks to the screen
+const navDashboard = document.getElementById("nav-dashboard") as HTMLLIElement;
+const navSettings = document.getElementById("nav-settings") as HTMLLIElement;
+const viewDashboard = document.getElementById("view-dashboard") as HTMLDivElement;
+const viewSettings = document.getElementById("view-settings") as HTMLDivElement;
+
+function switchView(targetView: 'dashboard' | 'settings'): void {
+    if (targetView === 'dashboard') {
+        navDashboard.classList.add("active");
+        navSettings.classList.remove("active");
+        
+        viewDashboard.classList.remove("hidden");
+        viewSettings.classList.add("hidden");
+        
+        pageTitle.textContent = "My Dashboard";
+        welcomeMsg.textContent = "Welcome! Managing performance fluidly across Laptop & Mobile layouts.";
+    } else {
+        
+        navDashboard.classList.remove("active");
+        navSettings.classList.add("active");
+        
+        viewDashboard.classList.add("hidden");
+        viewSettings.classList.remove("hidden");
+        
+        pageTitle.textContent = "Application Settings";
+        welcomeMsg.textContent = "Customize and configure your app behaviors here.";
+    }
+}
+
+if (navDashboard && navSettings) {
+    navDashboard.addEventListener("click", (e) => {
+        e.preventDefault();
+        switchView('dashboard');
+    });
+    
+    navSettings.addEventListener("click", (e) => {
+        e.preventDefault();
+        switchView('settings');
+    });
+}
+
 function renderTasks(): void {
     if (!taskList) return;
-    taskList.innerHTML = ""; // Clear current view
+    taskList.innerHTML = "";
     
     tasks.forEach(task => {
         const li = document.createElement("li");
@@ -28,7 +65,6 @@ function renderTasks(): void {
     });
 }
 
-// Interactivity: Add a new element to array
 function addNewTask(): void {
     const text = taskInput.value.trim();
     if (text === "") return;
@@ -40,10 +76,9 @@ function addNewTask(): void {
 
     tasks.push(newTask);
     renderTasks();
-    taskInput.value = ""; // Reset box
+    taskInput.value = "";
 }
 
-// Initialize Application Core
 if (welcomeMsg) {
     welcomeMsg.textContent = "Welcome! Managing performance fluidly across Laptop & Mobile layouts.";
 }
