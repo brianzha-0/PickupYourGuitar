@@ -4,8 +4,8 @@ interface Task {
 }
 
 let tasks: Task[] = [
-    { id: 1, text: "Build a responsive web application layout" },
-    { id: 2, text: "Connect TypeScript compiler functionality" }
+    { id: 1, text: "Cover the main theme of Undertale happily" },
+    { id: 2, text: "Embark Towards Life: Shown through Guitar" }
 ];
 
 const welcomeMsg = document.getElementById("welcome-msg") as HTMLParagraphElement;
@@ -27,8 +27,8 @@ function switchView(targetView: 'dashboard' | 'settings'): void {
         viewDashboard.classList.remove("hidden");
         viewSettings.classList.add("hidden");
         
-        pageTitle.textContent = "My Dashboard";
-        welcomeMsg.textContent = "Welcome! Managing performance fluidly across Laptop & Mobile layouts.";
+        pageTitle.textContent = "My Shelf";
+        welcomeMsg.textContent = "Welcome back! Here you will find jaw-dropping and awe-inspiring tunes of (y)ours . . . ";
     } else {
         
         navDashboard.classList.remove("active");
@@ -37,8 +37,8 @@ function switchView(targetView: 'dashboard' | 'settings'): void {
         viewDashboard.classList.add("hidden");
         viewSettings.classList.remove("hidden");
         
-        pageTitle.textContent = "Application Settings";
-        welcomeMsg.textContent = "Customize and configure your app behaviors here.";
+        pageTitle.textContent = "Fine Tuning";
+        welcomeMsg.textContent = "Where preference meets perfomance.";
     }
 }
 
@@ -80,7 +80,7 @@ function addNewTask(): void {
 }
 
 if (welcomeMsg) {
-    welcomeMsg.textContent = "Welcome! Managing performance fluidly across Laptop & Mobile layouts.";
+    welcomeMsg.textContent = "Greetings! Great things are waiting to be done!!";
 }
 
 if (addTaskBtn && taskInput) {
