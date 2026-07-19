@@ -11,9 +11,11 @@ body {
 
 
 .book-container {
+
     display: flex;
     align-items: center;
     gap: 30px;
+
 }
 
 
@@ -45,8 +47,7 @@ button {
 
     overflow:hidden;
 
-    box-shadow:
-        0 0 20px black;
+    box-shadow:0 0 20px black;
 
 }
 

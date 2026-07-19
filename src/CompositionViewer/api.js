@@ -8,8 +8,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 
 
 const files = [
-    "pdfs/song1.pdf",
-    "pdfs/song2.pdf"
+    "Pdfs/song1.pdf",
+    "Pdfs/song2.pdf"
 ];
 
 
