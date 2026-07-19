@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sheet Music Book</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs" type="module"></script>
+</head>
+
+<body>
+
+<div class="book-container">
+
+    <button id="prev">◀</button>
+
+    <div class="book">
+
+        <div class="page left">
+            <canvas id="leftPage"></canvas>
+        </div>
+
+        <div class="page right">
+            <canvas id="rightPage"></canvas>
+        </div>
+
+    </div>
+
+    <button id="next">▶</button>
+
+</div>
+
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
