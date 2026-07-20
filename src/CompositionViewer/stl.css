@@ -106,3 +106,66 @@ button {
         transform:rotateY(180deg);
     }
 }
+
+
+.right.turn{
+    transform-origin:left center;
+    animation:turn 0.4s forwards;
+}
+
+
+.right.turn canvas{
+    animation:pageFix 0.4s forwards;
+}
+
+
+@keyframes pageFix{
+    0%{
+        transform:scaleX(1);
+    }
+    100%{
+        transform:scaleX(-1);
+    }
+}
+
+
+.left.turn-back{
+    transform-origin:right center;
+    animation:turnBack 0.4s forwards;
+}
+
+
+.left.shift,
+.right.shift-back{
+    animation:shift 0.4s forwards;
+}
+
+
+@keyframes turn{
+    0%{
+        transform:rotateY(0deg);
+    }
+    100%{
+        transform:rotateY(-180deg);
+    }
+}
+
+
+@keyframes turnBack{
+    0%{
+        transform:rotateY(0deg);
+    }
+    100%{
+        transform:rotateY(180deg);
+    }
+}
+
+
+@keyframes shift{
+    0%{
+        transform:translateX(0);
+    }
+    100%{
+        transform:translateX(-8px);
+    }
+}

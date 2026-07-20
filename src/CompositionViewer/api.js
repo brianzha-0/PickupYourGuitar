@@ -178,21 +178,22 @@ document
 
     if(currentPage+2 < pages.length){
 
-        document
-        .querySelector(".right")
-        .classList.add("turn");
+        const right =
+        document.querySelector(".right");
 
+        currentPage +=2;
+
+        drawCanvas(
+            pages[currentPage],
+            rightCanvas
+        );
+
+        right.classList.add("turn");
 
         setTimeout(()=>{
-
-            currentPage +=2;
-
             showPages();
 
-
-            document
-            .querySelector(".right")
-            .classList.remove("turn");
+            right.classList.remove("turn");
 
 
         },400);
@@ -210,21 +211,27 @@ document
 .addEventListener("click",()=>{
 
     if(currentPage >= 2){
-        const oldPage = currentPage;
-        currentPage -=2;
-        drawCanvas(
-            pages[currentPage+1],
-            leftCanvas
-        );
 
-        const left = document.querySelector(".left");
+        const left =
+        document.querySelector(".left");
+
+
+        currentPage -=2;
+        showPages();
         left.classList.add("turn-back");
+
+        document
+        .querySelector(".right")
+        .classList.add("shift-back");
 
         setTimeout(()=>{
 
-            showPages();
+
 
             left.classList.remove("turn-back");
+            document
+            .querySelector(".right")
+            .classList.remove("shift-back");
 
 
         },400);
