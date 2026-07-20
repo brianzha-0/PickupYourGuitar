@@ -209,18 +209,28 @@ document
 .getElementById("prev")
 .addEventListener("click",()=>{
 
+    if(currentPage >= 2){
+        const oldPage = currentPage;
+        currentPage -=2;
+        drawCanvas(
+            pages[currentPage+1],
+            leftCanvas
+        );
 
-    if(currentPage>=2){
+        const left = document.querySelector(".left");
+        left.classList.add("turn-back");
 
-        currentPage-=2;
+        setTimeout(()=>{
 
-        showPages();
+            showPages();
+
+            left.classList.remove("turn-back");
+
+
+        },400);
 
     }
 
 
 });
-
-
-
 initialize();
