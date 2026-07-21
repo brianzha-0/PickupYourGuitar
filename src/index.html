@@ -3,57 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Pickup Your Guitar</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="../asset/CymbalSymbol.png">
 </head>
-<body>
-    <div class="app-container">
-        <nav class="navigation">
-            <div class="logo">PickupYourGuitar</div>
-            <ul class="nav-links">
-                <li id="nav-dashboard" class="active"><a href="#">Composition</a></li>
-                <li id="nav-settings"><a href="#">Tuning</a></li>
-            </ul>
-        </nav>
-    
-        <main class="main-content">
-            <header>
-                <h1 id="page-title">Mainframe</h1>
-                <p id="welcome-msg">Playing and laying out numerous musical encores</p>
-            </header>
-    
-            <div id="view-dashboard" class="view-content">
-                <section class="task-section">
-                    <div class="card">
-                        <h3>Sleek and Sound</h3>
-                        <div class="input-group">
-                            <input type="text" id="task-input" placeholder="What needs to be done?">
-                            <button id="add-task-btn">Reversion</button>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>Intonation of Intuition</h3>
-                        <ul id="task-list"></ul>
-                    </div>
-                </section>
-            </div>
-    
-            <div id="view-settings" class="view-content hidden">
-                <div class="card">
-                    <h3>Opportune</h3>
-                    <p style="margin-bottom: 1rem; color: #6b7280;">Configure your application layout and preferences below.</p>
-                    <div class="input-group" style="flex-direction: column; gap: 1rem; align-items: flex-start;">
-                        <label style="display: flex; gap: 0.5rem; align-items: center; width: 100%; cursor: pointer;">
-                            <input type="checkbox" id="dark-mode-toggle" style="flex: 0; width: auto;"> Enable Dark Mode Placeholder
-                        </label>
-                        <button style="background: #10b981;">Set this</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
 
-    <script src="../dist/app.js" defer></script>
+<body>
+
+<div class="app-container">
+
+    <nav class="navigation">
+
+        <div class="logo">
+               PickupYourGuitar
+            <img src="/asset/AcousticRealistic.png" width="100vw" height="100vh">
+        </div>
+
+        <div class="nav-decoration">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links">
+            <li id="nav-dashboard" class="active">
+                <a href="#">🎼 Composition</a>
+            </li>
+
+            <li id="nav-settings">
+                <a href="#">🎛 Tuning</a>
+            </li>
+        </ul>
+
+
+        <div class="sidebar-image">
+           
+            <img src="/asset/StringRain.png" alt="String Gadget">
+
+        </div>
+
+    </nav>
+
+
+
+    <main class="main-content">
+
+
+        <header>
+
+            <div class="hero-image">
+
+                <img src="/asset/InStrumEntail.avif" alt="Musical Assortment Asset">
+            
+            </div>
+
+
+            <div class="hero-text">
+
+                <h1 id="page-title">
+                    Mainframe Studio
+                </h1>
+
+                <p id="welcome-msg">
+                    From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <div id="view-dashboard" class="view-content">
+
+
+            <section class="task-section">
+
+
+                <div class="card">
+
+                    <div class="card-icon">
+                        🎵
+                    </div>
+
+                    <h3>
+                        Sleek and Sound
+                    </h3>
+
+
+                    <p class="subtitle">
+                        Write down your next riff, chord progression,
+                        or musical idea.
+                    </p>
+
+
+                    <div class="input-group">
+
+                        <input 
+                            type="text"
+                            id="task-input"
+                            placeholder="Enter a new composition idea..."
+                        >
+
+
+                        <button id="add-task-btn">
+                            Add Track
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="card">
+
+
+                    <div class="card-icon">
+                        🎸
+                    </div>
+
+                    <h3>
+                        Intonation of Intuition
+                    </h3>
+
+
+                    <p class="subtitle">
+                        Your saved riffs and musical sketches.
+                    </p>
+
+
+                    <ul id="task-list"></ul>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+        <div id="view-settings" class="view-content hidden">
+
+
+            <div class="card">
+
+
+                <div class="card-icon">
+                    𑣲𝄞
+                </div>
+
+
+                <h3>
+                    Studio Tuning
+                </h3>
+
+
+                <p class="subtitle">
+                    Turn Over the Page and Pick Up the Pace
+                </p>
+
+
+                <div class="input-group settings">
+
+
+                    <iframe id="scaled-iframe" src="/src/CompositionViewer/idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
+                        
+
+                    <button>
+                        Settings' Tone?
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script src="../dist/app.js" defer></script>
+
+
 </body>
+
+
 </html>
