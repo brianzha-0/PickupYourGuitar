@@ -1,3 +1,5 @@
+import Orientate from "./GUItARvision/GuitarVision";
+
 interface Task {
     id: number;
     text: string;
@@ -91,3 +93,13 @@ if (addTaskBtn && taskInput) {
 }
 
 renderTasks();
+
+function App() {
+
+    return (
+
+        <Orientate />
+
+    );
+    
+}
