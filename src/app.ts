@@ -1,5 +1,4 @@
-import Orientate from "./GUItARvision/GuitarVision";
-
+// Define interface for Task type-checking
 interface Task {
     id: number;
     text: string;
@@ -10,96 +9,101 @@ let tasks: Task[] = [
     { id: 2, text: "Embark Towards Life: Shown through Guitar" }
 ];
 
-const welcomeMsg = document.getElementById("welcome-msg") as HTMLParagraphElement;
-const pageTitle = document.getElementById("page-title") as HTMLHeadingElement;
-const taskList = document.getElementById("task-list") as HTMLUListElement;
-const taskInput = document.getElementById("task-input") as HTMLInputElement;
-const addTaskBtn = document.getElementById("add-task-btn") as HTMLButtonElement;
+document.addEventListener("DOMContentLoaded", () => {
+    // DOM Elements
+    const welcomeMsg = document.getElementById("welcome-msg") as HTMLParagraphElement | null;
+    const pageTitle = document.getElementById("page-title") as HTMLHeadingElement | null;
+    const taskList = document.getElementById("task-list") as HTMLUListElement | null;
+    const taskInput = document.getElementById("task-input") as HTMLInputElement | null;
+    const addTaskBtn = document.getElementById("add-task-btn") as HTMLButtonElement | null;
 
-const navDashboard = document.getElementById("nav-dashboard") as HTMLLIElement;
-const navSettings = document.getElementById("nav-settings") as HTMLLIElement;
-const viewDashboard = document.getElementById("view-dashboard") as HTMLDivElement;
-const viewSettings = document.getElementById("view-settings") as HTMLDivElement;
+    // Navigation Elements
+    const navDashboard = document.getElementById("nav-dashboard") as HTMLLIElement | null;
+    const navSettings = document.getElementById("nav-settings") as HTMLLIElement | null;
 
-function switchView(targetView: 'dashboard' | 'settings'): void {
-    if (targetView === 'dashboard') {
-        navDashboard.classList.add("active");
-        navSettings.classList.remove("active");
-        
-        viewDashboard.classList.remove("hidden");
-        viewSettings.classList.add("hidden");
-        
-        pageTitle.textContent = "My Shelf";
-        welcomeMsg.textContent = "Welcome back! Here you will find jaw-dropping and awe-inspiring tunes of (y)ours . . . ";
-    } else {
-        
-        navDashboard.classList.remove("active");
-        navSettings.classList.add("active");
-        
-        viewDashboard.classList.add("hidden");
-        viewSettings.classList.remove("hidden");
-        
-        pageTitle.textContent = "Fine Tuning";
-        welcomeMsg.textContent = "Where preference meets perfomance.";
+    const viewDashboard = document.getElementById("view-dashboard") as HTMLDivElement | null;
+    const viewSettings = document.getElementById("view-settings") as HTMLDivElement | null;
+
+    function switchView(targetView: 'dashboard' | 'settings'): void {
+        if (targetView === 'dashboard') {
+            if (navDashboard) navDashboard.classList.add("active");
+            if (navSettings) navSettings.classList.remove("active");
+            
+            if (viewDashboard) viewDashboard.classList.remove("hidden");
+            if (viewSettings) viewSettings.classList.add("hidden");
+
+            if (pageTitle) pageTitle.textContent = "Mainframe Studio";
+            if (welcomeMsg) welcomeMsg.textContent = "From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!";
+        } 
+        else if (targetView === 'settings') {
+            if (navDashboard) navDashboard.classList.remove("active");
+            if (navSettings) navSettings.classList.add("active");
+
+            if (viewDashboard) viewDashboard.classList.add("hidden");
+            if (viewSettings) viewSettings.classList.remove("hidden");
+
+            if (pageTitle) pageTitle.textContent = "Studio Tuning";
+            if (welcomeMsg) welcomeMsg.textContent = "Turn Over the Page and Pick Up the Pace — Where preference meets performance.";
+        }
     }
-}
 
-if (navDashboard && navSettings) {
-    navDashboard.addEventListener("click", (e) => {
-        e.preventDefault();
-        switchView('dashboard');
-    });
-    
-    navSettings.addEventListener("click", (e) => {
-        e.preventDefault();
-        switchView('settings');
-    });
-}
+    function renderTasks(): void {
+        if (!taskList)
+            return;
+        taskList.innerHTML = "";
 
-function renderTasks(): void {
-    if (!taskList) return;
-    taskList.innerHTML = "";
-    
-    tasks.forEach(task => {
-        const li = document.createElement("li");
-        li.textContent = task.text;
-        taskList.appendChild(li);
-    });
-}
+        tasks.forEach(task => {
+            const li = document.createElement("li");
+            li.textContent = task.text;
+            taskList.appendChild(li);
+        });
+    }
 
-function addNewTask(): void {
-    const text = taskInput.value.trim();
-    if (text === "") return;
+    function addNewTask(): void {
+        if (!taskInput) 
+            return;
+        const text = taskInput.value.trim();
+        
+        if (text === "") 
+            return;
 
-    const newTask: Task = {
-        id: Date.now(),
-        text: text
-    };
+        const newTask: Task = {
+            id: Date.now(),
+            text: text
+        };
 
-    tasks.push(newTask);
+        tasks.push(newTask);
+        renderTasks();
+        taskInput.value = "";
+    }
+
+    if (navDashboard) {
+        navDashboard.addEventListener("click", (e: Event) => {
+            e.preventDefault();
+            switchView('dashboard');
+        });
+    }
+
+    if (navSettings) {
+        navSettings.addEventListener("click", (e: Event) => {
+            e.preventDefault();
+            switchView('settings');
+        });
+    }
+
+    if (addTaskBtn) {
+        addTaskBtn.addEventListener("click", addNewTask);
+    }
+
+    if (taskInput) {
+        taskInput.addEventListener("keypress", (e: KeyboardEvent) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                addNewTask();
+            }
+        });
+    }
+
+    switchView('dashboard');
     renderTasks();
-    taskInput.value = "";
-}
-
-if (welcomeMsg) {
-    welcomeMsg.textContent = "Greetings! Great things are waiting to be done!!";
-}
-
-if (addTaskBtn && taskInput) {
-    addTaskBtn.addEventListener("click", addNewTask);
-    taskInput.addEventListener("keypress", (e: KeyboardEvent) => {
-        if (e.key === "Enter") addNewTask();
-    });
-}
-
-renderTasks();
-
-function App() {
-
-    return (
-
-        <Orientate />
-
-    );
-    
-}
+});
