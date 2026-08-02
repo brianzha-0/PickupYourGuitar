@@ -388,7 +388,7 @@
                 
                 <div class="studio-header">
                     <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;"><img src="/asset/recHordePloyer.avif" loading="lazy" width="100vw" height="100vh">Re: cord</h3>
-                    <p class="subtitle">Perforate, Florate, Perform</p>
+                    <p class="subtitle">Glistening, Laudible</p>
                 </div>
 
                 <div class="recorder-viewport">
@@ -477,7 +477,7 @@
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({
                     video: { width: { ideal: 1280 }, height: { ideal: 720 } },
-                    audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false }
+                    audio: { channelCount: 1, sampleRate: 48000, sampleSize: 16, echoCancellation: false, noiseSuppression: false, autoGainControl: false }
                 });
 
               
@@ -503,28 +503,26 @@
             audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const source = audioContext.createMediaStreamSource(stream);
 
-            
-            const splitter = audioContext.createChannelSplitter(2);
-            source.connect(splitter);
-
-            
             analyserL = audioContext.createAnalyser();
             analyserR = audioContext.createAnalyser();
-            analyserL.fftSize = 256;
-            analyserR.fftSize = 256;
 
-            splitter.connect(analyserL, 0); 
-            splitter.connect(analyserR, stream.getAudioTracks()[0] && splitter.numberOfOutputs > 1 ? 1 : 0); // Channel 1 -> Right
+            
 
-            const bufferL = new Float32Array(analyserL.fftSize);
-            const bufferR = new Float32Array(analyserR.fftSize);
+            analyserL.fftSize = 1024;
+            analyserR.fftSize = 1024;
+
+            source.connect(analyserL);
+            source.connect(analyserR);
+
+            const bufferL = new Uint8Array(analyserL.fftSize);
+            const bufferR = new Uint8Array(analyserR.fftSize);
 
         
             function updateMeters() {
                 if (audioContext.state === 'running') {
                  
-                    analyserL.getFloatTimeDomainData(bufferL);
-                    analyserR.getFloatTimeDomainData(bufferR);
+                    analyserL.getByteTimeDomainData(bufferL);
+                    analyserR.getByteTimeDomainData(bufferR);
 
                     const rmsL = calculateRMS(bufferL);
                     const rmsR = calculateRMS(bufferR);
@@ -544,12 +542,13 @@
         function calculateRMS(buffer) {
             let sum = 0;
             for (let i = 0; i < buffer.length; i++) {
-                sum += buffer[i] * buffer[i];
+                const sample = (buffer[i] - 128) / 128;
+    
+                sum += sample * sample;
             }
             const rms = Math.sqrt(sum / buffer.length);
-            
-            
-            return Math.min(1.0, rms * 5.0); 
+
+            return Math.min(rms * 12, 1);
         }
 
        
@@ -602,7 +601,8 @@
             if (audioContext && audioContext.state === "suspended")
                 audioContext.resume();
 
-            if (!mediaRecorder) return;
+            if (!mediaRecorder) 
+                return;
 
             if (!isRecording) {
                 recordedChunks = [];
