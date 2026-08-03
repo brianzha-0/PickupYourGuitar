@@ -11,6 +11,20 @@
 
 <body>
 
+<div class="controls">
+    <label class="upload-btn">
+        Upload PDFs
+        <input
+            type="file"
+            id="pdfUpload"
+            accept=".pdf,application/pdf"
+            multiple
+            hidden>
+    </label>
+
+    <span id="fileName">No PDF Loaded</span>
+</div>
+
 <div class="book-container">
 
     <button id="prev">◀</button>
@@ -30,7 +44,6 @@
     <button id="next">▶</button>
 
 </div>
-
 
 <script type="module" src="api.js"></script>
 

@@ -1,135 +1,53 @@
-import * as pdfjsLib from 
+import * as pdfjsLib from
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs";
-
 
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.mjs";
 
+// --------------------
+// HTML Elements
+// --------------------
 
+const uploadInput = document.getElementById("pdfUpload");
+const fileName = document.getElementById("fileName");
 
-const files = [
-    "Pdfs/song1.pdf",
-    "Pdfs/song2.pdf"
-];
+const leftCanvas = document.getElementById("leftPage");
+const rightCanvas = document.getElementById("rightPage");
 
+const leftCtx = leftCanvas.getContext("2d");
+const rightCtx = rightCanvas.getContext("2d");
+
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+
+// --------------------
+// Viewer State
+// --------------------
 
 let pages = [];
-
 let currentPage = 0;
 
+// --------------------
+// Draw Helper
+// --------------------
 
+function drawCanvas(source, target) {
 
-const leftCanvas =
-document.getElementById("leftPage");
+    target.width = source.width;
+    target.height = source.height;
 
-const rightCanvas =
-document.getElementById("rightPage");
+    const ctx = target.getContext("2d");
 
-
-const leftCtx =
-leftCanvas.getContext("2d");
-
-const rightCtx =
-rightCanvas.getContext("2d");
-
-
-
-async function loadPDF(file){
-
-    const pdf =
-    await pdfjsLib.getDocument(file).promise;
-
-
-    let rendered=[];
-
-
-    for(let i=1;i<=pdf.numPages;i++){
-
-        const page =
-        await pdf.getPage(i);
-
-
-        const viewport =
-        page.getViewport({
-            scale:1.5
-        });
-
-
-        const canvas =
-        document.createElement("canvas");
-
-        canvas.width =
-        viewport.width;
-
-        canvas.height =
-        viewport.height;
-
-
-        await page.render({
-
-            canvasContext:
-            canvas.getContext("2d"),
-
-            viewport
-
-        }).promise;
-
-
-        rendered.push(canvas);
-
-    }
-
-
-    return rendered;
+    ctx.clearRect(0, 0, target.width, target.height);
+    ctx.drawImage(source, 0, 0);
 
 }
 
+// --------------------
+// Display Current Spread
+// --------------------
 
-
-
-async function initialize(){
-
-    for(const pdf of files){
-
-        const loaded =
-        await loadPDF(pdf);
-
-        pages.push(...loaded);
-
-    }
-
-
-    showPages();
-
-}
-
-
-
-function drawCanvas(source,target){
-
-    target.width =
-    source.width;
-
-    target.height =
-    source.height;
-
-
-    const ctx =
-    target.getContext("2d");
-
-
-    ctx.drawImage(
-        source,
-        0,
-        0
-    );
-
-}
-
-
-
-function showPages(){
-
+function showPages() {
 
     leftCtx.clearRect(
         0,
@@ -138,7 +56,6 @@ function showPages(){
         leftCanvas.height
     );
 
-
     rightCtx.clearRect(
         0,
         0,
@@ -146,98 +63,91 @@ function showPages(){
         rightCanvas.height
     );
 
-
-    if(pages[currentPage]){
-
-        drawCanvas(
-            pages[currentPage],
-            leftCanvas
-        );
-
+    if (pages[currentPage]) {
+        drawCanvas(pages[currentPage], leftCanvas);
     }
 
-
-    if(pages[currentPage+1]){
-
-        drawCanvas(
-            pages[currentPage+1],
-            rightCanvas
-        );
-
+    if (pages[currentPage + 1]) {
+        drawCanvas(pages[currentPage + 1], rightCanvas);
     }
 
 }
 
+// --------------------
+// Upload PDFs
+// --------------------
 
+uploadInput.addEventListener("change", async (e) => {
 
+    const selectedFiles = [...e.target.files];
 
-document
-.getElementById("next")
-.addEventListener("click",()=>{
+    if (selectedFiles.length === 0)
+        return;
 
+    pages = [];
+    currentPage = 0;
 
-    if(currentPage+2 < pages.length){
+    fileName.textContent =
+        `${selectedFiles.length} PDF${selectedFiles.length > 1 ? "s" : ""} Loaded`;
 
-        const right =
-        document.querySelector(".right");
+    for (const file of selectedFiles) {
 
-        currentPage +=2;
+        const buffer = await file.arrayBuffer();
 
-        drawCanvas(
-            pages[currentPage],
-            rightCanvas
-        );
+        const pdf = await pdfjsLib.getDocument({
+            data: buffer
+        }).promise;
 
-        right.classList.add("turn");
+        for (let i = 1; i <= pdf.numPages; i++) {
 
-        setTimeout(()=>{
-            showPages();
+            const page = await pdf.getPage(i);
 
-            right.classList.remove("turn");
+            const viewport = page.getViewport({
+                scale: 1.5
+            });
 
+            const canvas = document.createElement("canvas");
 
-        },400);
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({
+                canvasContext: canvas.getContext("2d"),
+                viewport
+            }).promise;
+
+            pages.push(canvas);
+
+        }
 
     }
 
+    showPages();
 
 });
 
+// --------------------
+// Navigation
+// --------------------
 
+nextBtn.addEventListener("click", () => {
 
+    if (currentPage + 2 < pages.length) {
 
-document
-.getElementById("prev")
-.addEventListener("click",()=>{
-
-    if(currentPage >= 2){
-
-        const left =
-        document.querySelector(".left");
-
-
-        currentPage -=2;
+        currentPage += 2;
         showPages();
-        left.classList.add("turn-back");
-
-        document
-        .querySelector(".right")
-        .classList.add("shift-back");
-
-        setTimeout(()=>{
-
-
-
-            left.classList.remove("turn-back");
-            document
-            .querySelector(".right")
-            .classList.remove("shift-back");
-
-
-        },400);
 
     }
 
+});
+
+prevBtn.addEventListener("click", () => {
+
+    if (currentPage >= 2) {
+
+        currentPage -= 2;
+        showPages();
+
+    }
 
 });
-initialize();
