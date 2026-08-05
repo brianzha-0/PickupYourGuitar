@@ -1,4 +1,7 @@
 ## Opening Stages
+Official Product of Time:
+https://youtube.com/watch?v=0u0qISywP9E
+
 Rudimentary Deployment:
 Open index.html inside src which is at the root of the project folder using Live Server—an installable .vscode extension, through running the command shortcuts Alt+L followed by Alt+O
 
