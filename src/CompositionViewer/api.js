@@ -4,10 +4,6 @@ import * as pdfjsLib from
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.worker.min.mjs";
 
-// --------------------
-// HTML Elements
-// --------------------
-
 const uploadInput = document.getElementById("pdfUpload");
 const fileName = document.getElementById("fileName");
 
@@ -20,16 +16,8 @@ const rightCtx = rightCanvas.getContext("2d");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
 
-// --------------------
-// Viewer State
-// --------------------
-
 let pages = [];
 let currentPage = 0;
-
-// --------------------
-// Draw Helper
-// --------------------
 
 function drawCanvas(source, target) {
 
@@ -42,10 +30,6 @@ function drawCanvas(source, target) {
     ctx.drawImage(source, 0, 0);
 
 }
-
-// --------------------
-// Display Current Spread
-// --------------------
 
 function showPages() {
 
@@ -72,10 +56,6 @@ function showPages() {
     }
 
 }
-
-// --------------------
-// Upload PDFs
-// --------------------
 
 uploadInput.addEventListener("change", async (e) => {
 
@@ -125,10 +105,6 @@ uploadInput.addEventListener("change", async (e) => {
     showPages();
 
 });
-
-// --------------------
-// Navigation
-// --------------------
 
 nextBtn.addEventListener("click", () => {
 
