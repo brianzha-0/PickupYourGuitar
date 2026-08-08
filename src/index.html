@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en-CA">
 <head>
@@ -7,10 +8,9 @@
     <title>Pickup Your Guitar</title>
 
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="/CymbalSymbol.png">
+    <link rel="icon" type="image/png" href="/asset/CymbalSymbol.png">
 
     <style>
-        
         .recording-studio-section {
             margin-top: 2rem;
             display: flex;
@@ -52,7 +52,6 @@
             margin-top: 4px;
         }
 
-
         .recorder-viewport {
             display: flex;
             align-items: center;
@@ -81,7 +80,6 @@
             transform: scaleX(-1);
         }
 
-        
         .meter-wrapper {
             display: flex;
             flex-direction: column;
@@ -111,19 +109,18 @@
             transition: background-color 0.05s ease, box-shadow 0.05s ease;
         }
 
-       
         .meter-segment.active.level-low {
-            background-color: #800020; 
+            background-color: #800020;
             box-shadow: 0 0 6px rgba(128, 0, 32, 0.8);
         }
 
         .meter-segment.active.level-mid {
-            background-color: #b0003a; 
+            background-color: #b0003a;
             box-shadow: 0 0 8px rgba(176, 0, 58, 0.9);
         }
 
         .meter-segment.active.level-high {
-            background-color: #ff1e43; 
+            background-color: #ff1e43;
             box-shadow: 0 0 10px rgba(255, 30, 67, 1);
         }
 
@@ -134,7 +131,6 @@
             letter-spacing: 1px;
         }
 
-    
         .controls-container {
             display: flex;
             flex-direction: column;
@@ -176,14 +172,13 @@
             transition: all 0.3s ease;
         }
 
-       
         .record-btn-wrapper.recording {
             border-color: #ff1e43;
             box-shadow: 0 0 20px rgba(255, 30, 67, 0.5);
         }
 
         .record-btn-wrapper.recording .record-btn-inner {
-            border-radius: 8px; 
+            border-radius: 8px;
             width: 32px;
             height: 32px;
             background: linear-gradient(135deg, #ff1e43 0%, #b0003a 100%);
@@ -191,9 +186,17 @@
         }
 
         @keyframes pulse-maroon {
-            0% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 30, 67, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 30, 67, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 30, 67, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 30, 67, 0);
+            }
         }
 
         .status-text {
@@ -212,8 +215,8 @@
     <nav class="navigation">
 
         <div class="logo">
-            <img src="/AcousticRealistic.png" width="100vw" height="100vh">
-             PickupYourGuitar
+            <img src="/asset/AcousticRealistic.png" width="100vw" height="100vh">
+            PickupYourGuitar
         </div>
 
         <div class="nav-decoration">
@@ -233,28 +236,19 @@
             </li>
         </ul>
 
-
         <div class="sidebar-image">
-           
-            <img src="/StringRain.png" alt="String Gadget">
-
+            <img src="/asset/StringRain.png" alt="String Gadget">
         </div>
 
     </nav>
 
-
-
     <main class="main-content">
-
 
         <header>
 
             <div class="hero-image">
-
-                <img src="/InStrumEntail.avif" alt="Musical Assortment Asset">
-            
+                <img src="/asset/InStrumEntail.avif" alt="Musical Assortment Asset">
             </div>
-
 
             <div class="hero-text">
 
@@ -270,13 +264,9 @@
 
         </header>
 
-
-
         <div id="view-dashboard" class="view-content">
 
-
             <section class="task-section">
-
 
                 <div class="card">
 
@@ -288,20 +278,17 @@
                         Sleek and Sound
                     </h3>
 
-
                     <p class="subtitle">
-                        Tune Up Your Instrument(s) and<br>Jot Down Your Inspiration(s)  
+                        Tune Up Your Instrument(s) and<br>Jot Down Your Inspiration(s)
                     </p>
-
 
                     <div class="input-group">
 
-                        <input 
+                        <input
                             type="text"
                             id="task-input"
                             placeholder="Enter in a new composition idea . . . "
                         >
-
 
                         <button id="add-task-btn">
                             Track Task
@@ -309,12 +296,9 @@
 
                     </div>
 
-
                 </div>
 
-
                 <div class="card">
-
 
                     <div class="card-icon">
                         🎶
@@ -324,76 +308,84 @@
                         Intonation of Intuition
                     </h3>
 
-
                     <p class="subtitle">
                         Hear heap here
                     </p>
 
-
                     <ul id="task-list"></ul>
-
 
                 </div>
 
-
             </section>
-
 
         </div>
 
-
         <div id="view-settings" class="view-content hidden">
 
-
             <div class="card">
-
 
                 <div class="card-icon">
                     𑣲𝄞
                 </div>
 
-
                 <h3>
                     Studio Tuning
                 </h3>
-
 
                 <p class="subtitle">
                     Turn Over the Page and Pick Up the Pace
                 </p>
 
-
                 <div class="input-group settings">
 
-
-                    <iframe id="scaled-iframe" src="/src/CompositionViewer/idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
-                        
+                    <iframe
+                        id="scaled-iframe"
+                        src="/src/CompositionViewer/idx.html"
+                        title="Composition Viewer"
+                        frameborder="0"
+                        width="100%"
+                        height="100vh"
+                        scrolling="no"
+                    ></iframe>
 
                     <button>
                         Settings' Tone?
                     </button>
 
-
                 </div>
 
-
             </div>
-
 
         </div>
 
-
         <section class="recording-studio-section">
+
             <div class="studio-card">
-                
+
                 <div class="studio-header">
-                    <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;"><img src="/recHordePloyer.avif" loading="lazy" width="100vw" height="100vh">Re: cord</h3>
-                    <p class="subtitle">Glistening, Laudible</p>
+
+                    <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;">
+                        <img
+                            src="/asset/recHordePloyer.avif"
+                            loading="lazy"
+                            width="100vw"
+                            height="100vh"
+                        >
+                        Re: cord
+                    </h3>
+
+                    <p class="subtitle">
+                        Glistening, Laudible
+                    </p>
+
                 </div>
 
                 <div class="recorder-viewport">
+
                     <div class="meter-wrapper">
+
                         <div class="meter-container" id="meter-left">
+
                             <div class="meter-segment level-high" data-index="11"></div>
                             <div class="meter-segment level-high" data-index="10"></div>
                             <div class="meter-segment level-mid" data-index="9"></div>
@@ -406,63 +398,97 @@
                             <div class="meter-segment level-low" data-index="2"></div>
                             <div class="meter-segment level-low" data-index="1"></div>
                             <div class="meter-segment level-low" data-index="0"></div>
+
                         </div>
+
                         <span class="meter-label">🔊</span>
+
                     </div>
 
                     <div class="video-container">
-                        <video id="live-preview" autoplay playsinline muted></video>
+
+                        <video
+                            id="live-preview"
+                            autoplay
+                            playsinline
+                            muted
+                        ></video>
+
                     </div>
 
                     <div class="meter-wrapper">
+
                         <div class="meter-container" id="meter-right">
+
                             <div class="meter-segment level-high" data-index="11"></div>
                             <div class="meter-segment level-high" data-index="10"></div>
                             <div class="meter-segment level-mid" data-index="9"></div>
                             <div class="meter-segment level-mid" data-index="8"></div>
                             <div class="meter-segment level-mid" data-index="7"></div>
                             <div class="meter-segment level-mid" data-index="6"></div>
-                            <div class="meter-segment level-low" data-index="4"></div>
                             <div class="meter-segment level-low" data-index="5"></div>
+                            <div class="meter-segment level-low" data-index="4"></div>
                             <div class="meter-segment level-low" data-index="3"></div>
                             <div class="meter-segment level-low" data-index="2"></div>
                             <div class="meter-segment level-low" data-index="1"></div>
                             <div class="meter-segment level-low" data-index="0"></div>
+
                         </div>
+
                         <span class="meter-label">🕪</span>
+
                     </div>
+
                 </div>
 
                 <div class="controls-container">
-                    <button id="record-btn" class="record-btn-wrapper" title="Start/Stop Recording">
+
+                    <button
+                        id="record-btn"
+                        class="record-btn-wrapper"
+                        title="Start/Stop Recording"
+                    >
                         <div class="record-btn-inner"></div>
                     </button>
-                    <span id="record-status" class="status-text">Playfare Display</span>
+
+                    <span id="record-status" class="status-text">
+                        Playfare Display
+                    </span>
+
                 </div>
 
             </div>
-        </section>
 
+        </section>
 
     </main>
 
-
 </div>
-
 
 <script src="../dist/app.js" defer></script>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
+
         const liveVideo = document.getElementById("live-preview");
         const recordBtn = document.getElementById("record-btn");
         const recordStatus = document.getElementById("record-status");
-        
-        const segmentsLeft = Array.from(document.querySelectorAll("#meter-left .meter-segment"))
-            .sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
-            
-        const segmentsRight = Array.from(document.querySelectorAll("#meter-right .meter-segment"))
-            .sort((a, b) => parseInt(a.dataset.index) - parseInt(b.dataset.index));
+
+        const segmentsLeft = Array.from(
+            document.querySelectorAll("#meter-left .meter-segment")
+        ).sort(
+            (a, b) =>
+                parseInt(a.dataset.index) -
+                parseInt(b.dataset.index)
+        );
+
+        const segmentsRight = Array.from(
+            document.querySelectorAll("#meter-right .meter-segment")
+        ).sort(
+            (a, b) =>
+                parseInt(a.dataset.index) -
+                parseInt(b.dataset.index)
+        );
 
         const totalSegments = segmentsLeft.length;
 
@@ -472,41 +498,64 @@
         let audioContext;
         let analyserL, analyserR;
 
-        
         async function initStream() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({
-                    video: { width: { ideal: 1280 }, height: { ideal: 720 } },
-                    audio: { channelCount: 1, sampleRate: 48000, sampleSize: 16, echoCancellation: false, noiseSuppression: false, autoGainControl: false }
-                });
 
-              
+            try {
+
+                const stream =
+                    await navigator.mediaDevices.getUserMedia({
+                        video: {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 }
+                        },
+                        audio: {
+                            channelCount: 1,
+                            sampleRate: 48000,
+                            sampleSize: 16,
+                            echoCancellation: false,
+                            noiseSuppression: false,
+                            autoGainControl: false
+                        }
+                    });
+
                 liveVideo.srcObject = stream;
 
-                
                 setupAudioProcessing(stream);
 
-                
                 setupMediaRecorder(stream);
 
                 recordStatus.textContent = "Ready to record";
 
             } catch (err) {
-                console.error("Camera or Microphone access error:", err);
-                recordStatus.textContent = "Microphone/Camera access required.";
+
+                console.error(
+                    "Camera or Microphone access error:",
+                    err
+                );
+
+                recordStatus.textContent =
+                    "Microphone/Camera access required.";
+
                 recordStatus.style.color = "#ff1e43";
             }
         }
 
-        
         function setupAudioProcessing(stream) {
-            audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const source = audioContext.createMediaStreamSource(stream);
 
-            analyserL = audioContext.createAnalyser();
-            analyserR = audioContext.createAnalyser();
+            audioContext =
+                new (
+                    window.AudioContext ||
+                    window.webkitAudioContext
+                )();
 
-            
+            const source =
+                audioContext.createMediaStreamSource(stream);
+
+            analyserL =
+                audioContext.createAnalyser();
+
+            analyserR =
+                audioContext.createAnalyser();
 
             analyserL.fftSize = 1024;
             analyserR.fftSize = 1024;
@@ -514,22 +563,34 @@
             source.connect(analyserL);
             source.connect(analyserR);
 
-            const bufferL = new Uint8Array(analyserL.fftSize);
-            const bufferR = new Uint8Array(analyserR.fftSize);
+            const bufferL =
+                new Uint8Array(analyserL.fftSize);
 
-        
+            const bufferR =
+                new Uint8Array(analyserR.fftSize);
+
             function updateMeters() {
-                if (audioContext.state === 'running') {
-                 
+
+                if (audioContext.state === "running") {
+
                     analyserL.getByteTimeDomainData(bufferL);
                     analyserR.getByteTimeDomainData(bufferR);
 
-                    const rmsL = calculateRMS(bufferL);
-                    const rmsR = calculateRMS(bufferR);
+                    const rmsL =
+                        calculateRMS(bufferL);
 
-                   
-                    renderSegments(segmentsLeft, rmsL);
-                    renderSegments(segmentsRight, rmsR);
+                    const rmsR =
+                        calculateRMS(bufferR);
+
+                    renderSegments(
+                        segmentsLeft,
+                        rmsL
+                    );
+
+                    renderSegments(
+                        segmentsRight,
+                        rmsR
+                    );
                 }
 
                 requestAnimationFrame(updateMeters);
@@ -538,94 +599,167 @@
             updateMeters();
         }
 
-       
         function calculateRMS(buffer) {
+
             let sum = 0;
-            for (let i = 0; i < buffer.length; i++) {
-                const sample = (buffer[i] - 128) / 128;
-    
+
+            for (
+                let i = 0;
+                i < buffer.length;
+                i++
+            ) {
+
+                const sample =
+                    (buffer[i] - 128) / 128;
+
                 sum += sample * sample;
             }
-            const rms = Math.sqrt(sum / buffer.length);
+
+            const rms =
+                Math.sqrt(sum / buffer.length);
 
             return Math.min(rms * 12, 1);
         }
 
-       
-        function renderSegments(segmentsList, level) {
-            const activeCount = Math.round(level * totalSegments);
+        function renderSegments(
+            segmentsList,
+            level
+        ) {
 
-            for (let i = 0; i < totalSegments; i++) {
+            const activeCount =
+                Math.round(
+                    level * totalSegments
+                );
+
+            for (
+                let i = 0;
+                i < totalSegments;
+                i++
+            ) {
+
                 if (i < activeCount) {
-                    segmentsList[i].classList.add("active");
+
+                    segmentsList[i]
+                        .classList
+                        .add("active");
+
                 } else {
-                    segmentsList[i].classList.remove("active");
+
+                    segmentsList[i]
+                        .classList
+                        .remove("active");
                 }
             }
         }
 
-       
         function setupMediaRecorder(stream) {
-            mediaRecorder = new MediaRecorder(stream);
 
-            mediaRecorder.ondataavailable = (e) => {
-                if (e.data.size > 0) {
-                    recordedChunks.push(e.data);
-                }
-            };
+            mediaRecorder =
+                new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable =
+                (e) => {
+
+                    if (e.data.size > 0) {
+
+                        recordedChunks.push(
+                            e.data
+                        );
+                    }
+                };
 
             mediaRecorder.onstop = () => {
-                const blob = new Blob(recordedChunks, { type: "video/webm" });
+
+                const blob =
+                    new Blob(
+                        recordedChunks,
+                        { type: "video/webm" }
+                    );
+
                 recordedChunks = [];
 
-                
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
+                const url =
+                    URL.createObjectURL(blob);
+
+                const a =
+                    document.createElement("a");
+
                 a.style.display = "none";
                 a.href = url;
-                a.download = `Studio_Session_${Date.now()}.webm`;
+
+                a.download =
+                    `Studio_Session_${Date.now()}.webm`;
+
                 document.body.appendChild(a);
+
                 a.click();
 
                 setTimeout(() => {
+
                     document.body.removeChild(a);
+
                     window.URL.revokeObjectURL(url);
+
                 }, 100);
             };
         }
 
-        
-        recordBtn.addEventListener("click", () => {
+        recordBtn.addEventListener(
+            "click",
+            () => {
 
-            // Web Audio API requires user interaction to resume audio context on browsers
-            if (audioContext && audioContext.state === "suspended")
-                audioContext.resume();
+                if (
+                    audioContext &&
+                    audioContext.state === "suspended"
+                ) {
+                    audioContext.resume();
+                }
 
-            if (!mediaRecorder) 
-                return;
+                if (!mediaRecorder) {
+                    return;
+                }
 
-            if (!isRecording) {
-                recordedChunks = [];
-                mediaRecorder.start();
-                isRecording = true;
+                if (!isRecording) {
 
-                recordBtn.classList.add("recording");
-                recordStatus.textContent = "● Recording Live Performance";
-                recordStatus.style.color = "#ff1e43";
-            } else {
-                mediaRecorder.stop();
-                isRecording = false;
+                    recordedChunks = [];
 
-                recordBtn.classList.remove("recording");
-                recordStatus.textContent = "Session Saved! Ready to record again";
-                recordStatus.style.color = "#a3727d";
+                    mediaRecorder.start();
+
+                    isRecording = true;
+
+                    recordBtn.classList.add(
+                        "recording"
+                    );
+
+                    recordStatus.textContent =
+                        "● Recording Live Performance";
+
+                    recordStatus.style.color =
+                        "#ff1e43";
+
+                } else {
+
+                    mediaRecorder.stop();
+
+                    isRecording = false;
+
+                    recordBtn.classList.remove(
+                        "recording"
+                    );
+
+                    recordStatus.textContent =
+                        "Session Saved! Ready to record again";
+
+                    recordStatus.style.color =
+                        "#a3727d";
+                }
             }
-        });
+        );
 
-        
         initStream();
     });
 </script>
 
 </body>
 </html>
+```
