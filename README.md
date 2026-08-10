@@ -1,6 +1,7 @@
 #   PickupYourGuitar
 ##  Will of Materialising
 ### From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!
+![Recreating Recreation](/asset/ReasonAt.avif)
 #   Bill of Materials (BOM)
 | Name | Amount | Unit(s) | Tax |
 |------|--------|---------|-------|
