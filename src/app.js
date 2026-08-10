@@ -1,41 +1,32 @@
-// Define interface for Task type-checking
-interface Task {
-    id: number;
-    text: string;
-}
-
-let tasks: Task[] = [
+let tasks = [
     { id: 1, text: "Cover the main theme of Undertale happily" },
     { id: 2, text: "Embark Towards Life: Shown through Guitar" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-    // DOM Elements
-    const welcomeMsg = document.getElementById("welcome-msg") as HTMLParagraphElement | null;
-    const pageTitle = document.getElementById("page-title") as HTMLHeadingElement | null;
-    const taskList = document.getElementById("task-list") as HTMLUListElement | null;
-    const taskInput = document.getElementById("task-input") as HTMLInputElement | null;
-    const addTaskBtn = document.getElementById("add-task-btn") as HTMLButtonElement | null;
+    const welcomeMsg = document.getElementById("welcome-msg");
+    const pageTitle = document.getElementById("page-title");
+    const taskList = document.getElementById("task-list");
+    const taskInput = document.getElementById("task-input");
+    const addTaskBtn = document.getElementById("add-task-btn");
 
-    // Navigation Elements
-    const navDashboard = document.getElementById("nav-dashboard") as HTMLLIElement | null;
-    const navSettings = document.getElementById("nav-settings") as HTMLLIElement | null;
+    const navDashboard = document.getElementById("nav-dashboard");
+    const navSettings = document.getElementById("nav-settings");
 
-    const viewDashboard = document.getElementById("view-dashboard") as HTMLDivElement | null;
-    const viewSettings = document.getElementById("view-settings") as HTMLDivElement | null;
+    const viewDashboard = document.getElementById("view-dashboard");
+    const viewSettings = document.getElementById("view-settings");
 
-    function switchView(targetView: 'dashboard' | 'settings'): void {
-        if (targetView === 'dashboard') {
+    function switchView(targetView) {
+        if (targetView === "dashboard") {
             if (navDashboard) navDashboard.classList.add("active");
             if (navSettings) navSettings.classList.remove("active");
-            
+
             if (viewDashboard) viewDashboard.classList.remove("hidden");
             if (viewSettings) viewSettings.classList.add("hidden");
 
             if (pageTitle) pageTitle.textContent = "Mainframe Studio";
             if (welcomeMsg) welcomeMsg.textContent = "From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!";
-        } 
-        else if (targetView === 'settings') {
+        } else if (targetView === "settings") {
             if (navDashboard) navDashboard.classList.remove("active");
             if (navSettings) navSettings.classList.add("active");
 
@@ -47,9 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function renderTasks(): void {
+    function renderTasks() {
         if (!taskList)
             return;
+
         taskList.innerHTML = "";
 
         tasks.forEach(task => {
@@ -59,15 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function addNewTask(): void {
-        if (!taskInput) 
-            return;
-        const text = taskInput.value.trim();
-        
-        if (text === "") 
+    function addNewTask() {
+        if (!taskInput)
             return;
 
-        const newTask: Task = {
+        const text = taskInput.value.trim();
+
+        if (text === "")
+            return;
+
+        const newTask = {
             id: Date.now(),
             text: text
         };
@@ -78,16 +71,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (navDashboard) {
-        navDashboard.addEventListener("click", (e: Event) => {
+        navDashboard.addEventListener("click", (e) => {
             e.preventDefault();
-            switchView('dashboard');
+            switchView("dashboard");
         });
     }
 
     if (navSettings) {
-        navSettings.addEventListener("click", (e: Event) => {
+        navSettings.addEventListener("click", (e) => {
             e.preventDefault();
-            switchView('settings');
+            switchView("settings");
         });
     }
 
@@ -96,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (taskInput) {
-        taskInput.addEventListener("keypress", (e: KeyboardEvent) => {
+        taskInput.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 e.preventDefault();
                 addNewTask();
@@ -104,6 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    switchView('dashboard');
+    switchView("dashboard");
     renderTasks();
 });

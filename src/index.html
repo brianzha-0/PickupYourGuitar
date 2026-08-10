@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pickup Your Guitar</title>
+<title>Pic App Our Git AR</title>
 
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="/assets/CymbalSymbol.png">
+<link rel="icon" type="image/png" href="CymbalSymbol.png">
 
 <style>
     
@@ -203,8 +203,35 @@
         font-weight: 500;
         letter-spacing: 0.5px;
     }
+
+    #pdf-zoom-container { 
+        width: 100%; 
+        height: 100vh; 
+        overflow: hidden; 
+    } 
+    
+    #scaled-iframe { 
+        width: 100%; 
+        height: 100%; 
+        border: 0; 
+        transform: scale(1); 
+        transform-origin: center center; 
+        transition: transform 0.3s ease; 
+    } 
+    
+    #pdf-zoom-container.zoomed #scaled-iframe { 
+        transform: scale(1.35); 
+    }
 </style>
-```
+
+<script> 
+    const pdfZoomButton = document.getElementById("pdf-zoom-btn"); 
+    const pdfZoomContainer = document.getElementById("pdf-zoom-container"); 
+    
+    pdfZoomButton.addEventListener("click", () => { 
+        pdfZoomContainer.classList.toggle("zoomed"); 
+    }); 
+</script>
 
 </head>
 
@@ -212,7 +239,7 @@
 
 <div class="app-container">
 
-```
+
 <nav class="navigation">
 
     <div class="logo">
@@ -370,12 +397,17 @@
             <div class="input-group settings">
 
 
-                <iframe id="scaled-iframe" src="idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
-                    
+                <div class="input-group settings">
 
-                <button>
-                    Settings' Tone?
-                </button>
+                    <div id="pdf-zoom-container">
+                        <iframe id="scaled-iframe" src="idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
+                    </div>
+                    
+                    <button id="pdf-zoom-btn">
+                        Settings' Tone?
+                    </button>
+                    
+                </div>
 
 
             </div>
@@ -392,7 +424,7 @@
             
             <div class="studio-header">
                 <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;"><img src="asset/recHordePloyer.avif" loading="lazy" width="100vw" height="100vh">Re: cord</h3>
-                <p class="subtitle">Perforate, Florate Perform</p>
+                <p class="subtitle">Glistening, Laudible</p>
             </div>
 
             <div class="recorder-viewport">
@@ -449,7 +481,7 @@
 
 
 </main>
-```
+
 
 </div>
 
