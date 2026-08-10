@@ -1,4 +1,9 @@
 node_modules/
+# Untrack */
+# Config */
+# Makes */
+# Best */
+# Bet */
 /build/
 /dist/
 Pdfs/
