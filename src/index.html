@@ -1,380 +1,381 @@
 <!DOCTYPE html>
+
 <html lang="en-CA">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pickup Your Guitar</title>
+<title>Pickup Your Guitar</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="../asset/CymbalSymbol.png">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="../asset/CymbalSymbol.png">
 
-    <style>
-        
-        .recording-studio-section {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-            width: 100%;
-        }
+<style>
+    
+    .recording-studio-section {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        width: 100%;
+    }
 
-        .studio-card {
-            background: rgba(20, 10, 15, 0.9);
-            border: 1px solid rgba(128, 0, 32, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            width: 100%;
-            max-width: 920px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(128, 0, 32, 0.15);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .studio-card {
+        background: rgba(20, 10, 15, 0.9);
+        border: 1px solid rgba(128, 0, 32, 0.3);
+        border-radius: 16px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 920px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(128, 0, 32, 0.15);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        .studio-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
+    .studio-header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
 
-        .studio-header h3 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #f5e6ea;
-            letter-spacing: 0.5px;
-        }
+    .studio-header h3 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: #f5e6ea;
+        letter-spacing: 0.5px;
+    }
 
-        .studio-header .subtitle {
-            color: #a3727d;
-            font-size: 0.9rem;
-            margin-top: 4px;
-        }
+    .studio-header .subtitle {
+        color: #a3727d;
+        font-size: 0.9rem;
+        margin-top: 4px;
+    }
 
 
-        .recorder-viewport {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
+    .recorder-viewport {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 640px;
-            aspect-ratio: 16 / 9;
-            background-color: #0d0406;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-            border: 2px solid #3d141d;
-        }
+    .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 16 / 9;
+        background-color: #0d0406;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        border: 2px solid #3d141d;
+    }
 
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scaleX(-1);
-        }
-
-        
-        .meter-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .meter-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 340px;
-            width: 28px;
-            background: #120306;
-            border: 1px solid #4a121e;
-            border-radius: 8px;
-            padding: 6px;
-            box-shadow: inset 0 0 8px #000;
-        }
-
-        .meter-segment {
-            width: 100%;
-            height: 6px;
-            border-radius: 2px;
-            background-color: #240a10;
-            box-shadow: inset 0 0 2px rgba(0,0,0,0.8);
-            transition: background-color 0.05s ease, box-shadow 0.05s ease;
-        }
-
-       
-        .meter-segment.active.level-low {
-            background-color: #800020; 
-            box-shadow: 0 0 6px rgba(128, 0, 32, 0.8);
-        }
-
-        .meter-segment.active.level-mid {
-            background-color: #b0003a; 
-            box-shadow: 0 0 8px rgba(176, 0, 58, 0.9);
-        }
-
-        .meter-segment.active.level-high {
-            background-color: #ff1e43; 
-            box-shadow: 0 0 10px rgba(255, 30, 67, 1);
-        }
-
-        .meter-label {
-            font-size: 0.75rem;
-            color: #800020;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scaleX(-1);
+    }
 
     
-        .controls-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
+    .meter-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
 
-        .record-btn-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #2a0810 0%, #120306 100%);
-            border: 2px solid #5a1523;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+    .meter-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 340px;
+        width: 28px;
+        background: #120306;
+        border: 1px solid #4a121e;
+        border-radius: 8px;
+        padding: 6px;
+        box-shadow: inset 0 0 8px #000;
+    }
 
-        .record-btn-wrapper:hover {
-            transform: scale(1.05);
-            border-color: #b0003a;
-            box-shadow: 0 0 15px rgba(176, 0, 58, 0.4);
-        }
+    .meter-segment {
+        width: 100%;
+        height: 6px;
+        border-radius: 2px;
+        background-color: #240a10;
+        box-shadow: inset 0 0 2px rgba(0,0,0,0.8);
+        transition: background-color 0.05s ease, box-shadow 0.05s ease;
+    }
 
-        .record-btn-wrapper:active {
-            transform: scale(0.95);
-        }
+   
+    .meter-segment.active.level-low {
+        background-color: #800020; 
+        box-shadow: 0 0 6px rgba(128, 0, 32, 0.8);
+    }
 
-        .record-btn-inner {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, #b0003a 0%, #660019 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 12px rgba(176, 0, 58, 0.7);
-            transition: all 0.3s ease;
-        }
+    .meter-segment.active.level-mid {
+        background-color: #b0003a; 
+        box-shadow: 0 0 8px rgba(176, 0, 58, 0.9);
+    }
 
-       
-        .record-btn-wrapper.recording {
-            border-color: #ff1e43;
-            box-shadow: 0 0 20px rgba(255, 30, 67, 0.5);
-        }
+    .meter-segment.active.level-high {
+        background-color: #ff1e43; 
+        box-shadow: 0 0 10px rgba(255, 30, 67, 1);
+    }
 
-        .record-btn-wrapper.recording .record-btn-inner {
-            border-radius: 8px; 
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #ff1e43 0%, #b0003a 100%);
-            animation: pulse-maroon 1.5s infinite;
-        }
+    .meter-label {
+        font-size: 0.75rem;
+        color: #800020;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
 
-        @keyframes pulse-maroon {
-            0% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 30, 67, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0); }
-        }
 
-        .status-text {
-            font-size: 0.9rem;
-            color: #a3727d;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-    </style>
+    .controls-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .record-btn-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #2a0810 0%, #120306 100%);
+        border: 2px solid #5a1523;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .record-btn-wrapper:hover {
+        transform: scale(1.05);
+        border-color: #b0003a;
+        box-shadow: 0 0 15px rgba(176, 0, 58, 0.4);
+    }
+
+    .record-btn-wrapper:active {
+        transform: scale(0.95);
+    }
+
+    .record-btn-inner {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, #b0003a 0%, #660019 100%);
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(176, 0, 58, 0.7);
+        transition: all 0.3s ease;
+    }
+
+   
+    .record-btn-wrapper.recording {
+        border-color: #ff1e43;
+        box-shadow: 0 0 20px rgba(255, 30, 67, 0.5);
+    }
+
+    .record-btn-wrapper.recording .record-btn-inner {
+        border-radius: 8px; 
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(135deg, #ff1e43 0%, #b0003a 100%);
+        animation: pulse-maroon 1.5s infinite;
+    }
+
+    @keyframes pulse-maroon {
+        0% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(255, 30, 67, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 30, 67, 0); }
+    }
+
+    .status-text {
+        font-size: 0.9rem;
+        color: #a3727d;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+</style>
+```
+
 </head>
 
 <body>
 
 <div class="app-container">
 
-    <nav class="navigation">
+```
+<nav class="navigation">
 
-        <div class="logo">
-            <img src="/asset/AcousticRealistic.png" width="100vw" height="100vh">
-             PickupYourGuitar
+    <div class="logo">
+        <img src="/asset/AcousticRealistic.png" width="100vw" height="100vh">
+         PickupYourGuitar
+    </div>
+
+    <div class="nav-decoration">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links">
+        <li id="nav-dashboard" class="active">
+            <a href="#">🎼 Composition</a>
+        </li>
+
+        <li id="nav-settings">
+            <a href="idx.html">🎛 Tuning</a>
+        </li>
+    </ul>
+
+
+    <div class="sidebar-image">
+       
+        <img src="/asset/StringRain.png" alt="String Gadget">
+
+    </div>
+
+</nav>
+
+
+
+<main class="main-content">
+
+
+    <header>
+
+        <div class="hero-image">
+
+            <img src="/asset/InStrumEntail.avif" alt="Musical Assortment Asset">
+        
         </div>
 
-        <div class="nav-decoration">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
 
-        <ul class="nav-links">
-            <li id="nav-dashboard" class="active">
-                <a href="#">🎼 Composition</a>
-            </li>
+        <div class="hero-text">
 
-            <li id="nav-settings">
-                <a href="#">🎛 Tuning</a>
-            </li>
-        </ul>
+            <h1 id="page-title">
+                Mainframe Studio
+            </h1>
 
-
-        <div class="sidebar-image">
-           
-            <img src="/asset/StringRain.png" alt="String Gadget">
+            <p id="welcome-msg">
+                From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!
+            </p>
 
         </div>
 
-    </nav>
+    </header>
 
 
 
-    <main class="main-content">
+    <div id="view-dashboard" class="view-content">
 
 
-        <header>
-
-            <div class="hero-image">
-
-                <img src="/asset/InStrumEntail.avif" alt="Musical Assortment Asset">
-            
-            </div>
+        <section class="task-section">
 
 
-            <div class="hero-text">
+            <div class="card">
 
-                <h1 id="page-title">
-                    Mainframe Studio
-                </h1>
+                <div class="card-icon">
+                    🎵
+                </div>
 
-                <p id="welcome-msg">
-                    From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!
+                <h3>
+                    Sleek and Sound
+                </h3>
+
+
+                <p class="subtitle">
+                    Tune Up Your Instrument(s) and<br>Jot Down Your Inspiration(s)  
                 </p>
 
+
+                <div class="input-group">
+
+                    <input 
+                        type="text"
+                        id="task-input"
+                        placeholder="Enter in a new composition idea . . . "
+                    >
+
+
+                    <button id="add-task-btn">
+                        Track Task
+                    </button>
+
+                </div>
+
+
             </div>
-
-        </header>
-
-
-
-        <div id="view-dashboard" class="view-content">
-
-
-            <section class="task-section">
-
-
-                <div class="card">
-
-                    <div class="card-icon">
-                        🎵
-                    </div>
-
-                    <h3>
-                        Sleek and Sound
-                    </h3>
-
-
-                    <p class="subtitle">
-                        Tune Up Your Instrument(s) and<br>Jot Down Your Inspiration(s)  
-                    </p>
-
-
-                    <div class="input-group">
-
-                        <input 
-                            type="text"
-                            id="task-input"
-                            placeholder="Enter in a new composition idea . . . "
-                        >
-
-
-                        <button id="add-task-btn">
-                            Track Task
-                        </button>
-
-                    </div>
-
-
-                </div>
-
-
-                <div class="card">
-
-
-                    <div class="card-icon">
-                        🎶
-                    </div>
-
-                    <h3>
-                        Intonation of Intuition
-                    </h3>
-
-
-                    <p class="subtitle">
-                        Hear heap here
-                    </p>
-
-
-                    <ul id="task-list"></ul>
-
-
-                </div>
-
-
-            </section>
-
-
-        </div>
-
-
-        <div id="view-settings" class="view-content hidden">
 
 
             <div class="card">
 
 
                 <div class="card-icon">
-                    𑣲𝄞
+                    🎶
                 </div>
 
-
                 <h3>
-                    Studio Tuning
+                    Intonation of Intuition
                 </h3>
 
 
                 <p class="subtitle">
-                    Turn Over the Page and Pick Up the Pace
+                    Hear heap here
                 </p>
 
 
-                <div class="input-group settings">
+                <ul id="task-list"></ul>
 
 
-                    <iframe id="scaled-iframe" src="idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
-                        
-
-                    <button>
-                        Settings' Tone?
-                    </button>
+            </div>
 
 
-                </div>
+        </section>
+
+
+    </div>
+
+
+    <div id="view-settings" class="view-content hidden">
+
+
+        <div class="card">
+
+
+            <div class="card-icon">
+                𑣲𝄞
+            </div>
+
+
+            <h3>
+                Studio Tuning
+            </h3>
+
+
+            <p class="subtitle">
+                Turn Over the Page and Pick Up the Pace
+            </p>
+
+
+            <div class="input-group settings">
+
+
+                <iframe id="scaled-iframe" src="idx.html" title="Composition Viewer" frameborder="0" width="100%" height="100vh" scrolling="no"></iframe>
+                    
+
+                <button>
+                    Settings' Tone?
+                </button>
 
 
             </div>
@@ -383,72 +384,74 @@
         </div>
 
 
-        <section class="recording-studio-section">
-            <div class="studio-card">
-                
-                <div class="studio-header">
-                    <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;"><img src="/asset/recHordePloyer.avif" loading="lazy" width="100vw" height="100vh">Re: cord</h3>
-                    <p class="subtitle">Perforate, Florate Perform</p>
-                </div>
+    </div>
 
-                <div clwqass="recorder-viewport">
-                    <div class="meter-wrapper">
-                        <div class="meter-container" id="meter-left">
-                            <div class="meter-segment level-high" data-index="11"></div>
-                            <div class="meter-segment level-high" data-index="10"></div>
-                            <div class="meter-segment level-mid" data-index="9"></div>
-                            <div class="meter-segment level-mid" data-index="8"></div>
-                            <div class="meter-segment level-mid" data-index="7"></div>
-                            <div class="meter-segment level-mid" data-index="6"></div>
-                            <div class="meter-segment level-low" data-index="5"></div>
-                            <div class="meter-segment level-low" data-index="4"></div>
-                            <div class="meter-segment level-low" data-index="3"></div>
-                            <div class="meter-segment level-low" data-index="2"></div>
-                            <div class="meter-segment level-low" data-index="1"></div>
-                            <div class="meter-segment level-low" data-index="0"></div>
-                        </div>
-                        <span class="meter-label">L</span>
-                    </div>
 
-                    <div class="video-container">
-                        <video id="live-preview" autoplay playsinline muted></video>
-                    </div>
-
-                    <div class="meter-wrapper">
-                        <div class="meter-container" id="meter-right">
-                            <div class="meter-segment level-high" data-index="11"></div>
-                            <div class="meter-segment level-high" data-index="10"></div>
-                            <div class="meter-segment level-mid" data-index="9"></div>
-                            <div class="meter-segment level-mid" data-index="8"></div>
-                            <div class="meter-segment level-mid" data-index="7"></div>
-                            <div class="meter-segment level-mid" data-index="6"></div>
-                            <div class="meter-segment level-low" data-index="4"></div>
-                            <div class="meter-segment level-low" data-index="5"></div>
-                            <div class="meter-segment level-low" data-index="3"></div>
-                            <div class="meter-segment level-low" data-index="2"></div>
-                            <div class="meter-segment level-low" data-index="1"></div>
-                            <div class="meter-segment level-low" data-index="0"></div>
-                        </div>
-                        <span class="meter-label">R</span>
-                    </div>
-                </div>
-
-                <div class="controls-container">
-                    <button id="record-btn" class="record-btn-wrapper" title="Start/Stop Recording">
-                        <div class="record-btn-inner"></div>
-                    </button>
-                    <span id="record-status" class="status-text">Click meter area or record to start sound feed</span>
-                </div>
-
+    <section class="recording-studio-section">
+        <div class="studio-card">
+            
+            <div class="studio-header">
+                <h3 style="background: linear-gradient(90deg, #fcba03 0%, #fcba03 20%, #806032 50%, #806032 80%, #fcba03 100%); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block;"><img src="/asset/recHordePloyer.avif" loading="lazy" width="100vw" height="100vh">Re: cord</h3>
+                <p class="subtitle">Perforate, Florate Perform</p>
             </div>
-        </section>
+
+            <div class="recorder-viewport">
+                <div class="meter-wrapper">
+                    <div class="meter-container" id="meter-left">
+                        <div class="meter-segment level-high" data-index="11"></div>
+                        <div class="meter-segment level-high" data-index="10"></div>
+                        <div class="meter-segment level-mid" data-index="9"></div>
+                        <div class="meter-segment level-mid" data-index="8"></div>
+                        <div class="meter-segment level-mid" data-index="7"></div>
+                        <div class="meter-segment level-mid" data-index="6"></div>
+                        <div class="meter-segment level-low" data-index="5"></div>
+                        <div class="meter-segment level-low" data-index="4"></div>
+                        <div class="meter-segment level-low" data-index="3"></div>
+                        <div class="meter-segment level-low" data-index="2"></div>
+                        <div class="meter-segment level-low" data-index="1"></div>
+                        <div class="meter-segment level-low" data-index="0"></div>
+                    </div>
+                    <span class="meter-label">L</span>
+                </div>
+
+                <div class="video-container">
+                    <video id="live-preview" autoplay playsinline muted></video>
+                </div>
+
+                <div class="meter-wrapper">
+                    <div class="meter-container" id="meter-right">
+                        <div class="meter-segment level-high" data-index="11"></div>
+                        <div class="meter-segment level-high" data-index="10"></div>
+                        <div class="meter-segment level-mid" data-index="9"></div>
+                        <div class="meter-segment level-mid" data-index="8"></div>
+                        <div class="meter-segment level-mid" data-index="7"></div>
+                        <div class="meter-segment level-mid" data-index="6"></div>
+                        <div class="meter-segment level-low" data-index="4"></div>
+                        <div class="meter-segment level-low" data-index="5"></div>
+                        <div class="meter-segment level-low" data-index="3"></div>
+                        <div class="meter-segment level-low" data-index="2"></div>
+                        <div class="meter-segment level-low" data-index="1"></div>
+                        <div class="meter-segment level-low" data-index="0"></div>
+                    </div>
+                    <span class="meter-label">R</span>
+                </div>
+            </div>
+
+            <div class="controls-container">
+                <button id="record-btn" class="record-btn-wrapper" title="Start/Stop Recording">
+                    <div class="record-btn-inner"></div>
+                </button>
+                <span id="record-status" class="status-text">Click meter area or record to start sound feed</span>
+            </div>
+
+        </div>
+    </section>
 
 
-    </main>
-
+</main>
+```
 
 </div>
-
 
 <script src="../dist/app.js" defer></script>
 
@@ -514,7 +517,7 @@
             analyserR.fftSize = 256;
 
             splitter.connect(analyserL, 0); 
-            splitter.connect(analyserR, stream.getAudioTracks()[0] && splitter.numberOfOutputs > 1 ? 1 : 0); // Channel 1 -> Right
+            splitter.connect(analyserR, stream.getAudioTracks()[0] && splitter.numberOfOutputs > 1 ? 1 : 0);
 
             const bufferL = new Float32Array(analyserL.fftSize);
             const bufferR = new Float32Array(analyserR.fftSize);
@@ -597,8 +600,6 @@
 
         
         recordBtn.addEventListener("click", () => {
-
-            // Web Audio API requires user interaction to resume audio context on browsers
             if (audioContext && audioContext.state === "suspended")
                 audioContext.resume();
 
