@@ -1,6 +1,7 @@
 #   PickupYourGuitar
 ##  Will of Materialising
 ### From mellow melodies to captivating compositions, arriving here is a (stepping) (s)tool for musical creation. Hear, hear!
+![Bruce, Brute Banner](assets/Brute%20Banner%20Gone.png)
 ![Recreating Recreation](assets/ReasonAt.avif)
 #   Bill of Materials (BOM)
 | Name | Amount | Unit(s) | Tax |
