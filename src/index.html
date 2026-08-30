@@ -630,6 +630,20 @@
         
         initStream();
     });
+    
+    document.getElementById("nav-settings").addEventListener("click", () => {
+        const settings = document.getElementById("view-settings");
+
+        settings.classList.remove("hidden");
+
+        setTimeout(() => {
+            window.scrollTo({
+                left: (document.documentElement.scrollWidth - window.innerWidth) / 2,
+                top: 0,
+                behavior: "instant"
+            });
+        }, 50);
+    });
 </script>
 
 <script src="./app.js"></script>
